@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 
 const TodoInput = (props) => {
-    const { handleCreateTodo } = props
+    const {handleCreateTodo} = props;
 
-    const [input, setInput] = useState("")
+    const [input, setInput] = useState("");
 
     const handleInputTodo = (e) => {
         setInput(e.target.value);
@@ -12,14 +12,14 @@ const TodoInput = (props) => {
     const handleKeyPress = (e) => {
         if (e.key === "Enter") {
             handleCreateTodo(input);
-            setInput("")
+            setInput("");
         }
     };
 
     const handleAddClick = () => {
-        handleCreateTodo(input)
-        setInput("")
-    }
+        handleCreateTodo(input);
+        setInput("");
+    };
 
     return (
         <div className="is-flex is-justify-content-center my-6">
@@ -29,14 +29,14 @@ const TodoInput = (props) => {
                        type="text"
                        value={input}
                        onChange={handleInputTodo}
-                       onKeyPress={handleKeyPress} />
+                       onKeyPress={handleKeyPress}/>
             </div>
             <button data-testid="btn-add"
                     className="button" onClick={handleAddClick}>
                 add
             </button>
         </div>
-    )
-}
+    );
+};
 
 export default TodoInput;
