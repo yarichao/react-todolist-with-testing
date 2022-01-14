@@ -28,3 +28,23 @@ it('should add a dummy todo', function () {
     // expect Dummy Todo in the document
     expect(screen.getByText(/Dummy Todo/i)).toBeInTheDocument()
 });
+
+it('should check the sample todo ', function () {
+    render(<MockTodoPage/>)
+    const initCompleteBtn = screen.queryByTestId("btn-complete-12345")
+    fireEvent.click(initCompleteBtn)
+
+    expect(initCompleteBtn).toHaveAttribute('disabled');
+
+    const initBox = screen.queryByTestId("box-12345")
+    expect(initBox).toHaveClass('has-background-grey-lighter');
+});
+
+it('should delete the sample todo ', function () {
+    render(<MockTodoPage/>)
+    const initDeleteBtn = screen.queryByTestId("btn-delete-12345")
+
+    fireEvent.click(initDeleteBtn)
+
+    expect(screen.queryByText("Sample Todo")).toBeNull()
+});
