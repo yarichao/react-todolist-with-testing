@@ -1,9 +1,9 @@
 import React from "react";
-
 import "./App.scss";
+import TodoPage from "./todo/TodoPage";
 
 const App = () => {
-  return <h1>Hello Frontend Dev!</h1>;
+  return <TodoPage />;
 }
 
 export default App
