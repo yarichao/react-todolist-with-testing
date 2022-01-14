@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
+import TodoHead from "./TodoHead";
+import {CSVLink} from "react-csv";
 
 const TodoPage = () => {
 
@@ -35,10 +37,16 @@ const TodoPage = () => {
         localStorage.setItem("todos", JSON.stringify(list));
     }, [list]);
 
-    return (<div>
-        <TodoInput handleCreateTodo={handleCreateTodo}/>
-        <TodoList list={list} handleCompleteTodo={handleCompleteTodo} handleDeleteTodo={handleDeleteTodo}/>
-    </div>);
+    return (
+        <div>
+            <TodoHead>
+                <CSVLink data={list} filename={`todo ${ Date().toLocaleString()}.csv`}>
+                    <button className="button is-light">Export Todos</button>
+                </CSVLink>
+            </TodoHead>
+            <TodoInput handleCreateTodo={handleCreateTodo}/>
+            <TodoList list={list} handleCompleteTodo={handleCompleteTodo} handleDeleteTodo={handleDeleteTodo}/>
+        </div>);
 };
 
 export default TodoPage;
